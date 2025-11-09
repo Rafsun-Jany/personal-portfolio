@@ -1,7 +1,5 @@
 # Mohammad Rafsun Jany Mahin - Personal Portfolio
 
-![Portfolio preview](./Rafsun_Jany_9904.jpg)
-
 > Backend platform engineer crafting resilient systems, observability-first ops, and automation that keeps teams shipping.
 
 [![Built with HTML5](https://img.shields.io/badge/Built_with-HTML5-e34f26?logo=html5&logoColor=white)](#tech-stack) [![Styled with CSS](https://img.shields.io/badge/Styling-CSS3-2eaadc?logo=css3&logoColor=white)](#tech-stack) [![Vanilla JS](https://img.shields.io/badge/JavaScript-Vanilla-f7df1e?logo=javascript&logoColor=0a0a0a)](#tech-stack) [![Accessibility](https://img.shields.io/badge/Accessibility-AA-0a9396?logo=mozilla&logoColor=white)](#accessibility--ux)
