@@ -958,7 +958,6 @@ body.theme-dark .motion-circle-three {
 
 .stat-number-value {
   display: inline-block;
-  min-width: 2ch;
 }
 
 .stat-number-suffix {
