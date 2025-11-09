@@ -238,6 +238,92 @@
       </div>
     </section>
 
+    <section id="agent-demo" class="section agent-demo">
+      <div class="container">
+        <div class="section-heading reveal-on-scroll">
+          <h2>Try the Agent</h2>
+          <p>
+            Kick off a sandbox task to see how my agentic workflow diagnoses an incident, rolls out a safe patch, and reports back
+            &mdash; all with human-in-the-loop guardrails.
+          </p>
+        </div>
+        <div class="agent-console reveal-on-scroll" data-delay="60" data-agent-widget>
+          <header class="agent-header">
+            <div class="agent-status" role="status" aria-live="polite">
+              <span class="agent-status-indicator" aria-hidden="true"></span>
+              <span class="agent-status-label" data-agent-status>Idle &mdash; awaiting task</span>
+            </div>
+            <button class="btn primary agent-run-btn" type="button" data-agent-run>
+              Run Demo
+            </button>
+          </header>
+          <div class="agent-brief">
+            <div>
+              <h3>Scenario</h3>
+              <p>Restore degraded checkout latency (under 250&nbsp;ms) without risking a production outage.</p>
+            </div>
+            <dl class="agent-meta">
+              <div>
+                <dt>Guardrails</dt>
+                <dd>Human sign-off, staging verification, metrics gate</dd>
+              </div>
+              <div>
+                <dt>Playbook</dt>
+                <dd>Observability &rarr; Patch &rarr; Deploy &rarr; Validate</dd>
+              </div>
+            </dl>
+          </div>
+          <ol class="agent-steps" data-agent-steps>
+            <li class="agent-step is-pending" data-agent-step>
+              <span class="agent-step-index" aria-hidden="true">01</span>
+              <div class="agent-step-body">
+                <span class="agent-step-title">Assess service health</span>
+                <span class="agent-step-detail">Query Grafana + Loki for error rate, p95 latency, and recent deploys.</span>
+              </div>
+              <span class="agent-step-state" data-agent-step-state>Queued</span>
+            </li>
+            <li class="agent-step is-pending" data-agent-step>
+              <span class="agent-step-index" aria-hidden="true">02</span>
+              <div class="agent-step-body">
+                <span class="agent-step-title">Generate patch plan</span>
+                <span class="agent-step-detail">Propose config hotfix with rollback instructions for approval.</span>
+              </div>
+              <span class="agent-step-state" data-agent-step-state>Queued</span>
+            </li>
+            <li class="agent-step is-pending" data-agent-step>
+              <span class="agent-step-index" aria-hidden="true">03</span>
+              <div class="agent-step-body">
+                <span class="agent-step-title">Execute safe rollout</span>
+                <span class="agent-step-detail">Apply fix to staging, run smoke tests, and request human validation.</span>
+              </div>
+              <span class="agent-step-state" data-agent-step-state>Queued</span>
+            </li>
+            <li class="agent-step is-pending" data-agent-step>
+              <span class="agent-step-index" aria-hidden="true">04</span>
+              <div class="agent-step-body">
+                <span class="agent-step-title">Verify &amp; publish</span>
+                <span class="agent-step-detail">Deploy to production behind feature flag and confirm metrics.</span>
+              </div>
+              <span class="agent-step-state" data-agent-step-state>Queued</span>
+            </li>
+          </ol>
+          <div class="agent-log" role="log" aria-live="polite" aria-atomic="false">
+            <div class="agent-log-output" data-agent-log>
+              <p class="agent-log-entry">Agent standing by. Press “Run Demo” to simulate the workflow.</p>
+            </div>
+          </div>
+          <footer class="agent-safety">
+            <h3>Built-in guardrails</h3>
+            <ul>
+              <li>Scope limited to pre-approved services and configuration surfaces.</li>
+              <li>Mandatory staging validation and human acknowledgment before production changes.</li>
+              <li>Auto-abort if error budgets degrade or anomaly detectors spike.</li>
+            </ul>
+          </footer>
+        </div>
+      </div>
+    </section>
+
     <section id="highlights" class="section highlights">
       <div class="container">
         <div class="section-heading reveal-on-scroll">
@@ -650,6 +736,10 @@
               <span class="pill" data-icon="practice">
                 <iconify-icon icon="ph:puzzle-piece-bold" class="pill-icon" aria-hidden="true" width="22" height="22"></iconify-icon>
                 <span class="pill-label">Problem Solving</span>
+              </span>
+              <span class="pill" data-icon="practice">
+                <iconify-icon icon="mdi:robot-excited" class="pill-icon" aria-hidden="true" width="22" height="22"></iconify-icon>
+                <span class="pill-label">Agentic Development</span>
               </span>
             </div>
           </article>

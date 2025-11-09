@@ -918,6 +918,166 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const agentWidgets = document.querySelectorAll("[data-agent-widget]");
+  agentWidgets.forEach((widget) => {
+    const runButton = widget.querySelector("[data-agent-run]");
+    const statusLabel = widget.querySelector("[data-agent-status]");
+    const logOutput = widget.querySelector("[data-agent-log]");
+    const steps = Array.from(widget.querySelectorAll("[data-agent-step]"));
+    const stepStateNodes = steps.map((step) => step.querySelector("[data-agent-step-state]"));
+
+    if (!runButton || steps.length === 0 || !logOutput) {
+      return;
+    }
+
+    const workflow = [
+      {
+        status: "Assessing service health…",
+        logs: [
+          "<strong>Agent:</strong> Querying Grafana for checkout latency and error rate.",
+          "<strong>Agent:</strong> Pulling Loki logs for checkout-api pods.",
+        ],
+        completion: "Health snapshot captured. Bottleneck isolated to config drift.",
+      },
+      {
+        status: "Drafting remediation plan…",
+        logs: [
+          "<strong>Agent:</strong> Proposing config hotfix to rollback timeout value.",
+          "<strong>Agent:</strong> Generating rollback instructions + diff summary.",
+        ],
+        completion: "Playbook ready. Awaiting human sign-off.",
+      },
+      {
+        status: "Executing guarded rollout…",
+        logs: [
+          "<strong>Agent:</strong> Applying patch in staging and running smoke tests.",
+          "<strong>Agent:</strong> Requesting human validation checkpoint.",
+        ],
+        completion: "Staging validation passed. Human approval recorded.",
+      },
+      {
+        status: "Verifying production impact…",
+        logs: [
+          "<strong>Agent:</strong> Deploying change behind feature flag.",
+          "<strong>Agent:</strong> Monitoring metrics + error budget for 2 release cycles.",
+        ],
+        completion: "Latency restored < 220ms. Error budget back within limits.",
+      },
+    ];
+
+    let timers = [];
+    let running = false;
+
+    const clearTimers = () => {
+      timers.forEach((timer) => clearTimeout(timer));
+      timers = [];
+    };
+
+    const pushLog = (message) => {
+      const entry = document.createElement("p");
+      entry.className = "agent-log-entry";
+      entry.innerHTML = message;
+      logOutput.append(entry);
+      logOutput.scrollTop = logOutput.scrollHeight;
+    };
+
+    const reset = ({ preserveButton = false, statusText } = {}) => {
+      clearTimers();
+      running = false;
+      widget.classList.remove("is-running", "is-complete");
+      steps.forEach((step, index) => {
+        step.classList.remove("is-active", "is-complete");
+        step.classList.add("is-pending");
+        const stateNode = stepStateNodes[index];
+        if (stateNode) {
+          stateNode.textContent = "Queued";
+        }
+      });
+      if (!preserveButton) {
+        runButton.disabled = false;
+        runButton.textContent = "Run Demo";
+      }
+      if (statusLabel) {
+        statusLabel.textContent = statusText || "Idle — awaiting task";
+      }
+      logOutput.innerHTML =
+        '<p class="agent-log-entry">Agent standing by. Press “Run Demo” to simulate the workflow.</p>';
+    };
+
+    const finish = () => {
+      widget.classList.remove("is-running");
+      widget.classList.add("is-complete");
+      running = false;
+      runButton.disabled = false;
+      runButton.textContent = "Run Again";
+      if (statusLabel) {
+        statusLabel.textContent = "Completed — ready for human approval";
+      }
+      pushLog("<strong>Agent:</strong> Deployment complete. Awaiting human sign-off to close the incident.");
+    };
+
+    const runStep = (index) => {
+      if (index >= workflow.length) {
+        timers.push(setTimeout(finish, 900));
+        return;
+      }
+      const step = steps[index];
+      const stateNode = stepStateNodes[index];
+      const current = workflow[index];
+
+      step.classList.remove("is-pending");
+      step.classList.add("is-active");
+      if (stateNode) {
+        stateNode.textContent = "Running";
+      }
+      if (statusLabel) {
+        statusLabel.textContent = current.status;
+      }
+
+      current.logs.forEach((message, logIndex) => {
+        timers.push(
+          setTimeout(() => {
+            pushLog(message);
+          }, logIndex * 900)
+        );
+      });
+
+      const completionDelay = current.logs.length * 900 + 1200;
+      timers.push(
+        setTimeout(() => {
+          step.classList.remove("is-active");
+          step.classList.add("is-complete");
+          if (stateNode) {
+            stateNode.textContent = "Complete";
+          }
+          pushLog(`<span>✔</span> ${current.completion}`);
+          runStep(index + 1);
+        }, completionDelay)
+      );
+    };
+
+    const runDemo = () => {
+      if (running) {
+        return;
+      }
+      reset({ preserveButton: true, statusText: "Preparing playbook…" });
+      running = true;
+      widget.classList.add("is-running");
+      runButton.disabled = true;
+      runButton.textContent = "Running…";
+      pushLog("<strong>Agent:</strong> Loading guardrails and scoping the incident.");
+      timers.push(
+        setTimeout(() => {
+          runStep(0);
+        }, 600)
+      );
+    };
+
+    runButton.addEventListener("click", runDemo);
+
+    reset();
+  });
+
   const footerYear = document.getElementById("year");
   if (footerYear) {
     footerYear.textContent = new Date().getFullYear();
