@@ -98,17 +98,41 @@
             </a>
             <a
               class="chip"
-              href="https://www.linkedin.com/in/mohammadrafsun-jany-mahin-5160b4178"
+              href="https://www.linkedin.com/in/mohammad-rafsun-jany-mahin-5160b4178/"
               target="_blank"
               rel="noopener"
             >
               <span class="chip-icon">in</span>
               <span class="chip-text">LinkedIn</span>
             </a>
-            <a class="chip" href="Rafsun_Resume.pdf" download>
-              <span class="chip-icon">CV</span>
-              <span class="chip-text">Download Resume</span>
-            </a>
+            <div class="resume-preview">
+              <a
+                class="chip resume-preview-trigger"
+                href="Rafsun_Resume.pdf"
+                download
+                data-preview="Rafsun_Resume.pdf"
+              >
+                <span class="chip-icon">CV</span>
+                <span class="chip-text">Download Resume</span>
+              </a>
+              <div
+                class="resume-preview-panel"
+                role="dialog"
+                aria-label="Resume preview"
+                aria-hidden="true"
+              >
+                <div class="resume-preview-content" data-preview-content>
+                  <p class="resume-preview-placeholder">
+                    Hover or focus to load a quick PDF preview. Click to download the full resume.
+                  </p>
+                </div>
+                <div class="resume-preview-actions">
+                  <a href="Rafsun_Resume.pdf" target="_blank" rel="noopener">
+                    Open full-size resume
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="hero-actions">
             <a class="btn primary" href="#contact">Work With Me</a>
@@ -678,7 +702,33 @@
         <div class="contact-card reveal-on-scroll" data-delay="100">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="Rafsun_Resume.pdf" download>Download Resume</a></li>
+            <li class="resume-preview resume-preview--align-left">
+              <a
+                class="resume-preview-trigger"
+                href="Rafsun_Resume.pdf"
+                download
+                data-preview="Rafsun_Resume.pdf"
+              >
+                Download Resume
+              </a>
+              <div
+                class="resume-preview-panel"
+                role="dialog"
+                aria-label="Resume preview"
+                aria-hidden="true"
+              >
+                <div class="resume-preview-content" data-preview-content>
+                  <p class="resume-preview-placeholder">
+                    Hover or focus to load a quick PDF preview. Click to download the full resume.
+                  </p>
+                </div>
+                <div class="resume-preview-actions">
+                  <a href="Rafsun_Resume.pdf" target="_blank" rel="noopener">
+                    Open full-size resume
+                  </a>
+                </div>
+              </div>
+            </li>
             <li>
               <a href="https://www.linkedin.com/in/mohammadrafsun-jany-mahin-5160b4178" target="_blank" rel="noopener">
                 LinkedIn Profile
