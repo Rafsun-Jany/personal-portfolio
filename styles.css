@@ -1674,7 +1674,7 @@ body.theme-dark .motion-circle-three {
   color: #e1e8ff;
 }
 
-.education .content-card {
+.background .content-card {
   background: var(--color-surface);
   border-radius: var(--radius-xl);
   padding: 2.4rem;
@@ -1682,13 +1682,71 @@ body.theme-dark .motion-circle-three {
   box-shadow: var(--shadow-lg);
 }
 
-.education h2 {
+.background .content-card > h3 {
   margin: 0 0 1.2rem;
+}
+
+.background-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: start;
 }
 
 .education-content {
   display: grid;
   gap: 1.2rem;
+}
+
+.education-content h4 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.publication-content {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.publication-entry {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.publication-entry h4 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.publication-entry p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.publication-entry .entry-meta {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.publication-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.publication-link::after {
+  content: "\2197";
+  font-size: 0.85em;
+  transition: transform var(--transition);
+}
+
+.publication-link:hover::after,
+.publication-link:focus-visible::after {
+  transform: translateY(-2px);
 }
 
 .contact {

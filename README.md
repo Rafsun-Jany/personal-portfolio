@@ -21,15 +21,17 @@ This single-page portfolio highlights the work of Mohammad Rafsun Jany Mahin, a 
 ## Feature Showcase
 - **Immersive hero** with animated stat counters, rotating headlines, interactive reaction buttons, and a theme-aware hero doodle.
 - **Responsive, accessible navigation** featuring a skip link, scroll progress indicator, sticky header, and a keyboard-friendly mobile menu.
-- **Highlights, projects, and experience sections** packed with data-rich cards, filterable categories, and reveal-on-scroll animations that respect reduced motion.
+- **Highlights, projects, experience, toolbox, and background sections** packed with data-rich storytelling, filterable categories, and reveal-on-scroll animations that respect reduced motion.
+- **Background section** pairs the education history with publications in matching content cards for a cohesive narrative.
+- **Agentic development sandbox** lets visitors run a guided `Try the Agent` demo that simulates your guardrail-driven incident remediation workflow.
 - **Live contact hub** including quick email and phone actions, downloadable resume, local time clock with working-hours indicator, and location metadata.
-- **Polished micro-interactions** such as persistent theme toggle, confetti celebration trigger, toast notifications, back-to-top control, and intersection-aware active nav links.
+- **Polished micro-interactions** such as resume hover preview, persistent theme toggle, confetti celebration trigger, toast notifications, back-to-top control, and intersection-aware active nav links.
 - **Performance-friendly defaults**: lazy animations, intersection observers for work offloading, and graceful fallbacks when browser APIs are unavailable.
 
 ## Tech Stack
 - `HTML5` semantic layout with ARIA annotations for assistive tech.
 - `CSS3` custom design system with fluid typography, CSS variables, and responsive grids.
-- `Vanilla JavaScript` for interactivity (prefers-reduced-motion handling, localStorage theme persistence, IntersectionObserver-driven animations, dynamic clocks, and confetti canvas renderers).
+- `Vanilla JavaScript` for interactivity (prefers-reduced-motion handling, localStorage theme persistence, IntersectionObserver-driven animations, resume preview, agent demo workflow, dynamic clocks, and confetti canvas renderers).
 
 ## Getting Started
 1. **Clone the repository**
@@ -67,10 +69,12 @@ This single-page portfolio highlights the work of Mohammad Rafsun Jany Mahin, a 
 - Toasts, stat counters, and clock announce status changes with appropriate ARIA roles.
 
 ## Customization Ideas
-- Update the content sections (`highlights`, `projects`, `experience`, `skills`, `education`) in `index.html` to reflect new achievements.
+- Update the content sections (`highlights`, `projects`, `experience`, `skills`, `background`) in `index.html` to reflect new achievements.
+- Tailor the publication entries inside the background section (`.publication-entry` blocks) to link to updated talks, articles, or whitepapers.
 - Swap `Rafsun_Jany_9904.jpg` with a lighter hero image and adjust colors in `styles.css` to match new branding.
 - Extend the project filters in `scripts.js` by adding categories and dataset attributes to project cards.
 - Integrate analytics or form handling by wiring the contact buttons to your preferred platforms.
+- Expand the agent demo with additional scenarios, metrics streaming, or hooks into a real sandbox environment.
 
 ## Deployment Tips
 - Host the `main` branch on GitHub Pages, Netlify, Vercel, or any static hosting service - no build process required.
